@@ -6,6 +6,10 @@ import About from './views/About.vue';
 Vue.use(Router);
 
 export default new Router({
+  base: '/',
+  linkActiveClass: 'active',
+  linkExactActiveClass: 'exact-active',
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -19,3 +23,4 @@ export default new Router({
     },
   ],
 });
+

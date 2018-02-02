@@ -1,0 +1,9 @@
+:root {
+    /* Colors */
+    --brand-color: #35495e;
+    --main-color: #42b983;
+	--primary-font-color: #2c3e50;
+
+	/* Typeography */
+	--primary-font: "Open Sans", sans-serif;
+}

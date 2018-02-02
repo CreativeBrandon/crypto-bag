@@ -1,0 +1,33 @@
+@import-normalize;
+@import 'vars';
+@import 'mixins';
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: var(--primary-font-color);
+}
+
+a {
+    color: #42b983;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+h1,
+h2 {
+    font-weight: normal;
+}
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
