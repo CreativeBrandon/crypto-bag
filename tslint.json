@@ -10,6 +10,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
-    "semicolon": [false, "never"]
+    "semicolon": [false, "never"],
+    "trailing-comma": false
   }
 }

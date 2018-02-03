@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "esnext",
     "strict": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -13,7 +13,13 @@
       "@/*": [
         "src/*"
       ]
-    }
+    },
+    "lib": [
+      "es2015.promise",
+      "es2017",
+      "esnext",
+      "dom"
+    ]
   },
   "include": [
     "src/**/*.ts",
