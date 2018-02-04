@@ -1,7 +1,7 @@
 export interface CoinsEntities {
     loaded: boolean
     isLoading: boolean
-    ids: number[]
+    ids: string[]
     byIds: ByIds
 }
 

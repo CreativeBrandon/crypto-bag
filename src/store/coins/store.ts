@@ -1,27 +1,40 @@
 import Vue from 'vue'
 import Vuex, { ActionTree, GetterTree, MutationTree } from 'vuex'
-import { CoinsEntities } from '../../types/coins'
+import { CoinsEntities } from '@/types/coins'
+import * as action from './action-types'
+import * as getter from './getter-types'
+import * as mutation from './mutation-types'
 
 Vue.use(Vuex)
 
 export interface State {
     entities: CoinsEntities
+    errors: {}
 }
 
-const mutations: MutationTree<State> = {}
+const mutations: MutationTree<State> = {
+    [mutation.FETCH_COINS_SUCCESS]: mutation.fetchCoinsSuccess,
+    [mutation.FETCH_COINS_ERROR]: mutation.fetchCoinsError
+}
 
-const getters: GetterTree<State, any> = {}
+const getters: GetterTree<State, any> = {
+    [getter.GET_COINS]: state => state.entities.ids.map(id => state.entities.byIds[id]),
+    [getter.IS_LOADING]: state => state.entities.isLoading
+}
 
-const actions: ActionTree<State, any> = {}
+const actions: ActionTree<State, any> = {
+    [action.FETCH_COINS]: action.fetchCoins
+}
 
 const state = (): State => {
     return {
-        entities: {
-            loaded: false,
-            isLoading: false,
-            ids: [],
-            byIds: {}
-        }
+      errors: {},
+      entities: {
+        loaded: false,
+        isLoading: false,
+        ids: [],
+        byIds: {}
+      }
     }
 }
 

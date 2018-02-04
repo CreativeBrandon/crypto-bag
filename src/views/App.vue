@@ -28,7 +28,7 @@ export default class App extends Vue {}
 </script>
 
 <style>
-@import 'styles/theme.css';
+@import '../styles/theme.css';
 
 #nav {
     padding: 30px;
