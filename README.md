@@ -1,2 +1,2 @@
 # crypto-bag
-Manage your cryptocurrency holdings 
+Manage your cryptocurrency holdings
