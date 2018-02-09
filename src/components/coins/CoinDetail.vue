@@ -1,9 +1,9 @@
 <template>
     <div class="coin-detail">
         <h3 class="name">{{coin.rank}} {{coin.name}}</h3>
-        <div><span>Price:</span> {{coin.price_usd}} USD</div>
+        <div><span>Price:</span> {{coin.price_usd | currency}} USD</div>
         <div><span>Sat:</span> {{coin.price_btc}} /BTC</div>
-        <div><span>Market Cap:</span> {{coin.market_cap_usd}}</div>
+        <div><span>Market Cap:</span> {{coin.market_cap_usd | currency}}</div>
     </div>
 </template>
 

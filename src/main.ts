@@ -3,8 +3,9 @@ import Vuetify from 'vuetify'
 import App from './views/App.vue'
 import router from './router'
 import store from './store'
-import './registerServiceWorker'
 import 'vuetify/dist/vuetify.min.css'
+import './registerServiceWorker'
+import './utils/filters'
 
 Vue.config.productionTip = false
 
