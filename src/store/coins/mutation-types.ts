@@ -8,6 +8,8 @@ export type FETCH_COINS_SUCCESS = typeof FETCH_COINS_SUCCESS
 export const FETCH_COINS_ERROR = '[COINS] Fetch COINS ERROR'
 export type FETCH_COINS_ERROR = typeof FETCH_COINS_ERROR
 
+export const LOADING = '[COINS] LOADING'
+export type LOADING = typeof LOADING
 
 export const fetchCoinsSuccess = (state: State, payload: Coin[]) => {
     state.entities = {

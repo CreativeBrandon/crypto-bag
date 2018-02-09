@@ -15,6 +15,7 @@ export type FETCH_COINS_BY_CATEGORY = typeof FETCH_COINS_BY_CATEGORY
 
 export const fetchCoins = (context: ActionContext<State, any>) => {
     if (!context.state.entities.loaded) {
+        context.commit(mutation.LOADING)
         coinsService
             .fetchCoins(100)
             .then(res => context.commit(mutation.FETCH_COINS_SUCCESS, res.data))
