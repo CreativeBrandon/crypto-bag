@@ -5,6 +5,10 @@ export interface CoinsEntities {
     byIds: ByIds
 }
 
+export interface CoinsResponse {
+    data: Coin[]
+}
+
 export interface Coin {
     id: string
     name: string

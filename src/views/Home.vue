@@ -1,11 +1,9 @@
 <template>
   <div class="home">
     <img src="../assets/logo.png">
-    <h1>Home</h1>
+    <h1>Trending Cryptos</h1>
 
-    <div v-for="coin in coins" :key="coin.id">
-     {{coin.rank}}.) {{ coin.id }}
-    </div>
+    <coinDetail :coins="coins" />
   </div>
 </template>
 
@@ -16,8 +14,10 @@ import * as actions from '@/store/coins/action-types'
 import * as getters from '@/store/coins/getter-types'
 import { Coin } from '@/types/coins'
 
+const coinDetail = () => import('@/components/coins/CoinList.vue')
+
 @Component({
-    components: {}
+    components: { coinDetail }
 })
 export default class Home extends Vue {
     @Action(actions.FETCH_COINS) fetchCoins: any

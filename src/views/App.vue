@@ -30,16 +30,9 @@ export default class App extends Vue {}
 <style>
 @import '../styles/theme.css';
 
-#nav {
-    padding: 30px;
-}
-
-#nav a {
-    font-weight: bold;
-    color: var(--primary-font-color);
-}
-
-#nav a.router-link-exact-active {
-    color: var(--main-color);
+a:hover,
+a:focus {
+    color: purple;
+    text-decoration: underline;
 }
 </style>

@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { Coin } from '../types/coins'
+import axios, { AxiosPromise} from 'axios'
+import { Coin, CoinsResponse } from '../types/coins'
 
 const API = 'https://API.coinmarketcap.com/v1'
 
@@ -12,8 +12,8 @@ class CoinsService {
         })
     }
 
-    fetchCoins(limit: number = 10) {
-        return axios.get<Coin[]>(`${API}/ticker/?limit=${limit}`)
+    fetchCoins(limit: number = 10): AxiosPromise<CoinsResponse> {
+        return axios.get<CoinsResponse>(`${API}/ticker/?limit=${limit}`)
     }
 }
 
