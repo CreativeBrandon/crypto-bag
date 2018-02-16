@@ -15,7 +15,7 @@ export interface State {
 const mutations: MutationTree<State> = {
     [mutation.FETCH_COINS_SUCCESS]: mutation.fetchCoinsSuccess,
     [mutation.FETCH_COINS_ERROR]: mutation.fetchCoinsError,
-    [mutation.LOADING]: (state: State) => state.entities.isLoading = true 
+    [mutation.LOADING]: (state: State) => state.entities.isLoading = true
 }
 
 const getters: GetterTree<State, any> = {

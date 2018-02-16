@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="coin-list">
         <coinDetail 
             v-for="coin in coins"
             :coin="coin"

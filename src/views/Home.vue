@@ -8,7 +8,7 @@
         :size="60"
         :color="'#ff1d5e'"/>
 
-    <coinDetail :coins="coins" />
+    <coinList :coins="coins" />
   </div>
 </template>
 
@@ -26,10 +26,10 @@ import * as actions from '@/store/coins/action-types'
 import * as getters from '@/store/coins/getter-types'
 import { Coin } from '@/types/coins'
 
-const coinDetail = () => import('@/components/coins/CoinList.vue')
+const coinList = () => import('@/components/coins/CoinList.vue')
 
 @Component({
-    components: { AtomSpinner, coinDetail }
+    components: { AtomSpinner, coinList }
 })
 export default class Home extends Vue {
     @Action(actions.FETCH_COINS) fetchCoins: any
