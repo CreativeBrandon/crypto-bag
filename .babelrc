@@ -1,0 +1,12 @@
+{
+    "presets": [["env", { "modules": false }], "@vue/app"],
+    "plugins": [
+      "syntax-dynamic-import"
+    ],
+    "env": {
+        "test": {
+            "presets": [["env"], "@vue/app"],
+            "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
+        }
+    }
+}

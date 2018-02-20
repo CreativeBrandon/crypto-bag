@@ -3,6 +3,7 @@ node_modules
 /dist
 todo.md
 coverageReport
+coverage
 
 # local env files
 .env.local

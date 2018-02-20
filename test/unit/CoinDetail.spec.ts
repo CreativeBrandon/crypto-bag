@@ -18,8 +18,7 @@ describe('coinDetail', () => {
         expect(wrapper.classes()).toContain('coin-detail')
     })
 
-    test('renders coin detail component with props', () => {
-        const props = wrapper.props() as { coin: Coin }
-        expect(props.coin.rank).toEqual(coin.rank)
+    test('renders coin detail component with coin prop', () => {
+        expect(wrapper.hasProp('coin', coin)).toBeTruthy()
     })
 })
