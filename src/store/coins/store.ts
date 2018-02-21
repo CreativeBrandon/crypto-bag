@@ -41,7 +41,7 @@ const state = (): State => {
 
 export const store = {
     namespace: true,
-    state,
+    state: state(),
     mutations,
     actions,
     getters
