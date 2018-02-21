@@ -16,7 +16,7 @@ describe('coin list Component', () => {
 
     beforeEach(() => (wrapper = factory({ coins: coins })))
 
-    test('cotainer hasclass coin-list', () => {
+    test('container hasclass coin-list', () => {
         expect(wrapper.find('.coin-list').exists()).toBe(true)
     })
 
