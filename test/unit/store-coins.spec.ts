@@ -18,14 +18,14 @@ describe('Vuex Store - Coins ', () => {
     beforeEach(() => ( store = storeFactory()))
 
     describe('Mutations ', () => {
-        test(`${mutations.FETCH_COINS_SUCCESS} - add coins to normalized Store State (byIds & ids)`, async () => {
+        test(`${mutations.FETCH_COINS_SUCCESS} - add coins to normalized Store State (byIds & ids)`, () => {
             const mockEntry = [coin] as Coin[]
             store.commit(mutations.FETCH_COINS_SUCCESS, mockEntry)
             expect(store.state.entities.ids).toContain(mockEntry[0].id)
             expect(store.state.entities.byIds[mockEntry[0].id]).toEqual(mockEntry[0])
         })
 
-        test(`${mutations.FETCH_COINS_ERROR} - throw error`, async () => {
+        test(`${mutations.FETCH_COINS_ERROR} - throw error`, () => {
             const mockEntry = {error: 500, message: 'unable to fetch coins'}
             store.commit(mutations.FETCH_COINS_ERROR, mockEntry)
             expect(store.state.entities.loaded).toBeFalsy()
