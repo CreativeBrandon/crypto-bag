@@ -4,13 +4,13 @@ import * as mutation from './mutation-types'
 import { coinsService } from '@/services/coins.service'
 
 // ACTIONS
-export const FETCH_COINS = 'FETCH_COINS'
+export const FETCH_COINS = '[COINS] FETCH_COINS'
 export type FETCH_COINS = typeof FETCH_COINS
 
-export const FETCH_COINS_SUCCESS = 'FETCH_COINS_SUCCESS'
+export const FETCH_COINS_SUCCESS = '[COINS] FETCH_COINS_SUCCESS'
 export type FETCH_COINS_SUCCESS = typeof FETCH_COINS_SUCCESS
 
-export const FETCH_COINS_BY_CATEGORY = 'FETCH_COINS_BY_CATEGORY'
+export const FETCH_COINS_BY_CATEGORY = '[COINS] FETCH_COINS_BY_CATEGORY'
 export type FETCH_COINS_BY_CATEGORY = typeof FETCH_COINS_BY_CATEGORY
 
 export const fetchCoins = (context: ActionContext<State, any>) => {

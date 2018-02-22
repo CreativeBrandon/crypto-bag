@@ -9,16 +9,17 @@ const factory = (props = {}) => {
     })
 }
 
-describe('coinDetail', () => {
+describe('CoinDetail Component', () => {
     const coin = coinMock() as Coin
-    const wrapper = factory({ coin: coin })
+    const wrapper = factory({ coin })
 
-    test('hasclass coin-detail', () => {
+    test('should have ".coin-detail" class on container', () => {
         expect(wrapper.find('.coin-detail').exists()).toBe(true) // finds first el
         expect(wrapper.classes()).toContain('coin-detail')
     })
 
-    test('renders coin detail component with coin prop', () => {
-        expect(wrapper.hasProp('coin', coin)).toBeTruthy()
+    test('should have "coin" prop', () => {
+        const props = wrapper.props() as { coin: Coin }
+        expect(props.coin).toBeTruthy()
     })
 })

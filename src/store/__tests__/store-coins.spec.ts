@@ -19,27 +19,27 @@ describe('Vuex Store - Coins', () => {
     beforeEach(() => ( store = storeFactory()))
 
     describe('Getters', () => {
-        test(`${getters.GET_COINS} - from store`, () => {
+        test(`${getters.GET_COINS} - should get coins from store`, () => {
             const mockEntry = [coin] as Coin[]
             store.commit(mutations.FETCH_COINS_SUCCESS, mockEntry)
             expect(store.getters[getters.GET_COINS]).toEqual(mockEntry)
         })
         
-        test(`${getters.IS_LOADING} - is truthy when value is set to true`, () => {
+        test(`${getters.IS_LOADING} - should be truthy when value is set to true`, () => {
             store.state.entities.isLoading = true
             expect(store.getters[getters.IS_LOADING]).toBeTruthy()
         })
     })
 
     describe('Mutations', () => {
-        test(`${mutations.FETCH_COINS_SUCCESS} - add coins to normalized Store State (byIds & ids)`, () => {
+        test(`${mutations.FETCH_COINS_SUCCESS} - should add coins to normalized Store State (byIds & ids)`, () => {
             const mockEntry = [coin] as Coin[]
             store.commit(mutations.FETCH_COINS_SUCCESS, mockEntry)
             expect(store.state.entities.ids).toContain(mockEntry[0].id)
             expect(store.state.entities.byIds[mockEntry[0].id]).toEqual(mockEntry[0])
         })
 
-        test(`${mutations.FETCH_COINS_ERROR} - throw error`, () => {
+        test(`${mutations.FETCH_COINS_ERROR} - should return an error message`, () => {
             const mockEntry = {error: 500, message: 'unable to fetch coins'}
             store.commit(mutations.FETCH_COINS_ERROR, mockEntry)
             expect(store.state.entities.loaded).toBeFalsy()
