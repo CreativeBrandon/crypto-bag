@@ -31,14 +31,15 @@ export default class CoinDetail extends Vue {
   iconPath: string = ''
 
   created() {
-    const icon = this.coin ? this.coin.symbol.toLowerCase().replace(/[0-9]/g, "X")  : null
-
+    const icon = this.coin
+      ? this.coin.symbol.toLowerCase().replace(/[0-9]/g, 'X')
+      : null
     if (icon) this.setIconPath(icon)
   }
 
-  setIconPath(icon: string){
-    let iconPath = require(`@creativebrandon/cryptocurrency-icons/svg/color/${icon}.svg`)
-    if (iconPath) return this.iconPath = iconPath
+  setIconPath(icon: string) {
+    const iconPath = require(`@creativebrandon/cryptocurrency-icons/svg/color/${icon}.svg`)
+    if (iconPath) return (this.iconPath = iconPath)
   }
 }
 </script>

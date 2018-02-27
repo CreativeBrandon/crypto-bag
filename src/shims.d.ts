@@ -3,6 +3,11 @@ declare module '*.vue' {
     export default Vue
 }
 
+declare module '*.json' {
+    const data: any
+    export default data
+}
+
 declare module 'flush-promises' {
     export default function flushPromises(): any
 }

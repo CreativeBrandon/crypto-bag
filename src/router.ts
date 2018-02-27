@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
 
 const About = () => import('@/views/About.vue')
 const Home = () => import('@/views/Home.vue')
 const NotFoundPage = () => import('@/views/NotFound.vue')
 
-Vue.use(Router)
+Vue.use(VueRouter)
 Vue.use(Meta)
 
 export default new Router({

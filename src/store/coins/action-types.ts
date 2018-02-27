@@ -17,7 +17,7 @@ export const fetchCoins = (context: ActionContext<State, any>) => {
     if (!context.state.entities.loaded) {
         context.commit(mutation.LOADING)
         coinsService
-            .fetchCoins(100)
+            .fetchCoins(25)
             .then(res => context.commit(mutation.FETCH_COINS_SUCCESS, res.data))
             .catch(err => context.commit(mutation.FETCH_COINS_ERROR, err))
     }

@@ -12,22 +12,22 @@ export interface State {
     errors: {}
 }
 
-const mutations: MutationTree<State> = {
+export const mutations: MutationTree<State> = {
     [mutation.FETCH_COINS_SUCCESS]: mutation.fetchCoinsSuccess,
     [mutation.FETCH_COINS_ERROR]: mutation.fetchCoinsError,
     [mutation.LOADING]: (state: State) => state.entities.isLoading = true
 }
 
-const getters: GetterTree<State, any> = {
+export const getters: GetterTree<State, any> = {
     [getter.GET_COINS]: state => state.entities.ids.map(id => state.entities.byIds[id]),
     [getter.IS_LOADING]: state => state.entities.isLoading
 }
 
-const actions: ActionTree<State, any> = {
+export const actions: ActionTree<State, any> = {
     [action.FETCH_COINS]: action.fetchCoins
 }
 
-const state = (): State => {
+export const state = (): State => {
     return {
       errors: {},
       entities: {
@@ -46,3 +46,5 @@ export const store = {
     actions,
     getters
 }
+
+export default store

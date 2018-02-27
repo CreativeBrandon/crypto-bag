@@ -15,7 +15,7 @@ describe('CoinList Component', () => {
     const coins = [coin]
     let wrapper: Wrapper<Vue>
 
-    beforeEach(() => (wrapper = factory({ coins: coins })))
+    beforeEach(() => (wrapper = factory({ coins })))
 
     test('should have ".coin-list" class on container', () => {
         expect(wrapper.find('.coin-list').exists()).toBe(true)
