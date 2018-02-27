@@ -10,10 +10,18 @@ import { Component, Vue } from 'vue-property-decorator'
 
 const HelloWorld = () => import('@/components/HelloWorld.vue')
 
+Component.registerHooks(['metaInfo'])
+
 @Component({
   components: {
     HelloWorld,
   },
 })
-export default class About extends Vue {}
+export default class About extends Vue {
+  public metaInfo() {
+    return {
+      title: 'About'
+    }
+  }
+}
 </script>

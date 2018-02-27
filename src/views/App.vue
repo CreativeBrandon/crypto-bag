@@ -13,18 +13,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator'
 
 const Footer = () => import('@/components/Footer.vue')
 const Header = () => import('@/components/Header.vue')
+
+Component.registerHooks(['metaInfo'])
 
 @Component({
   components: {
     Footer,
     Header
-  },
+  }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  public metaInfo() {
+    return {
+      htmlAttrs: {},
+      meta: {},
+      title: 'Home',
+      titleTemplate: '%s | Crypto Bag'
+    }
+  }
+}
 </script>
 
 <style>
@@ -32,7 +43,7 @@ export default class App extends Vue {}
 
 a:hover,
 a:focus {
-    color: purple;
-    text-decoration: underline;
+  color: purple;
+  text-decoration: underline;
 }
 </style>

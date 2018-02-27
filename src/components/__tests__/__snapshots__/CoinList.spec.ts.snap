@@ -3,6 +3,7 @@
 exports[`CoinList Component should render a list of CoinDetail components 1`] = `
 <section class="coin-list">
     <div class="coin-detail">
+        <img src="[object Object]" alt="Bitcoin" class="icon">
         <h3 class="name">1 Bitcoin</h3>
         <div><span>Price:</span> 573.137 USD</div>
         <div><span>Sat:</span> 1 /BTC</div>

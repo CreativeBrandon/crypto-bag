@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.png">
     <h1>Trending Cryptos</h1>
 
     <atom-spinner v-if="isLoading"
         :animation-duration="1000"
         :size="60"
-        :color="'#ff1d5e'"/>
+        :color="'#ff1d5e'" />
 
     <coinList :coins="coins" />
   </div>
 </template>
 
-<style scoped>
+<style scoped >
 .atom-spinner {
     margin: 0 auto;
 }
