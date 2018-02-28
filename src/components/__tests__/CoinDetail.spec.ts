@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { shallow } from '@vue/test-utils'
-import { Coin, coinMock } from '@/types/coins'
+import { Coin } from '@/types/coins'
+import { coinMock } from 'test/mocks'
 import coinDetail from '@/components/coins/coinDetail.vue'
 
 const factory = (props = {}) => {

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import { shallow, mount, Wrapper } from '@vue/test-utils'
-import { Coin, coinMock } from '@/types/coins'
+import { Coin } from '@/types/coins'
 import coinList from '@/components/coins/coinList.vue'
 import coinDetail from '@/components/coins/coinDetail.vue'
+import { coinMock } from 'test/mocks'
 
 const factory = (props = {}) => {
     return mount(coinList, {
