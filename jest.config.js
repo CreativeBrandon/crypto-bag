@@ -13,7 +13,8 @@ module.exports = {
     '^.+\\.ts?$': 'ts-jest',
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(svg|jpg|png)$': '<rootDir>/test/mocks/empty-module.js'
   },
   snapshotSerializers: [
     'jest-serializer-vue'

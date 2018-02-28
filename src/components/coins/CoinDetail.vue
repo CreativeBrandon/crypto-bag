@@ -1,6 +1,6 @@
 <template>
     <div class="coin-detail">
-        <img class="icon" :src="iconPath" :alt="coin.name" /> 
+        <img class="icon" :src="iconPath" :alt="coin.name" />
         <h3 class="name">{{coin.rank}} {{coin.name}}</h3>
         <div><span>Price:</span> {{coin.price_usd | currency}} USD</div>
         <div><span>Sat:</span> {{coin.price_btc}} /BTC</div>
@@ -31,9 +31,7 @@ export default class CoinDetail extends Vue {
   iconPath: string = ''
 
   created() {
-    const icon = this.coin
-      ? this.coin.symbol.toLowerCase().replace(/[0-9]/g, 'X')
-      : null
+    const icon = this.coin ? this.coin.symbol.toLowerCase().replace(/[0-9]/g, 'X') : null
     if (icon) this.setIconPath(icon)
   }
 

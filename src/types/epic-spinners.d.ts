@@ -1,5 +1,6 @@
 declare module 'epic-spinners' {
     import Vue from 'vue'
+    export class HollowDotsSpinner extends Vue {}
     export class AtomSpinner extends Vue {}
     export class BreedingRhombusSpinner extends Vue {}
     export class CirclesToRhombusesSpinner extends Vue {}
@@ -8,7 +9,6 @@ declare module 'epic-spinners' {
     export class FulfillingSquareSpinner extends Vue {}
     export class FulfillingBouncingCircleSpinner extends Vue {}
     export class HalfCircleSpinner extends Vue {}
-    export class HollowDotsSpinner extends Vue {}
     export class IntersectingCirclesSpinner extends Vue {}
     export class LoopingRhombusesSpinner extends Vue {}
     export class OrbitSpinner extends Vue {}
@@ -21,4 +21,3 @@ declare module 'epic-spinners' {
     export class SwappingSquaresSpinner extends Vue {}
     export class TrinityRingsSpinner extends Vue {}
 }
-
