@@ -3,20 +3,18 @@
 @import 'mixins';
 
 #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply --typeography-theme;
     text-align: center;
-    color: var(--primary-font-color);
 }
 
 a {
-    color: #42b983;
+    color: var(--main-color);
     text-decoration: none;
 }
+
 a:hover,
 a:focus { 
-    text-decoration: underline;
+    color: var(--alternate-color);
 }
 
 h1,

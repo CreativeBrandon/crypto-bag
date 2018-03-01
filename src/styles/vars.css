@@ -1,9 +1,15 @@
 :root {
     /* Colors */
+    --alternate-color: purple;
     --brand-color: #35495e;
     --main-color: #42b983;
 	--primary-font-color: #2c3e50;
 
-	/* Typeography */
-	--primary-font: "Open Sans", sans-serif;
+    /* Typeography */
+    --typeography-theme: {
+        color: var(--primary-font-color);
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    };
 }

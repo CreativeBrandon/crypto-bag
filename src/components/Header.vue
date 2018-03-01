@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     
-    <img class="header-logo" src="../assets/logo.png">
+    <router-link class="logo-container" to="/"><img class="logo" src="../assets/logo.png"></router-link>
 
     <nav id="nav">
       <router-link to="/">Home</router-link> 
@@ -11,23 +11,30 @@
 </template>
 
 <style scoped>
+@import '../styles/vars.css';
+
 .header {
     border-bottom: solid thin #ccc;
     display: flex;
     align-items: center;
     padding: 15px 20px;
 }
-.header-logo {
+
+.logo {
   height: 40px;
-  margin-right: 20px;
   width: auto;
 }
 
-#nav a {
+.logo-container {
+  display: flex;
+  margin-right: 20px;
+}
+
+nav a {
     margin: 0 10px;
 }
 
-#nav a.router-link-exact-active {
+nav a.active {
     color: var(--main-color);
 }
 </style>
