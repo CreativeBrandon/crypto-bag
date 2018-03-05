@@ -8,13 +8,17 @@
 }
 
 a {
-    color: var(--main-color);
+    color: var(--indigo);
     text-decoration: none;
+}
+
+a.active {
+    color: var(--main-color);
 }
 
 a:hover,
 a:focus { 
-    color: var(--alternate-color);
+    color: var(--indigo);
 }
 
 h1,

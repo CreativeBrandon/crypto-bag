@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <Header />
-    <aside class="tray">Bags</aside>
+    <Tray />
     
-    <main class="container">
+    <v-container class="container">
       <router-view></router-view>
-    </main>
+    </v-container>
     
     <Footer />
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -16,13 +16,15 @@ import { Component, Vue } from 'vue-property-decorator'
 
 const Footer = () => import('@/components/Footer.vue')
 const Header = () => import('@/components/Header.vue')
+const Tray = () => import('@/components/Tray.vue')
 
 Component.registerHooks(['metaInfo'])
 
 @Component({
   components: {
     Footer,
-    Header
+    Header,
+    Tray
   }
 })
 export default class App extends Vue {
@@ -41,7 +43,7 @@ export default class App extends Vue {
 @import '../styles/theme.css';
 @import '../styles/vars.css';
 
-#app {
+.application--wrap {
   display: grid;
   grid-template-rows: 60px auto 80px;
 	grid-template-areas:
@@ -65,7 +67,7 @@ header {
   grid-area: h;
 }
 
-main {
+.container {
   grid-area: m;
 }
 

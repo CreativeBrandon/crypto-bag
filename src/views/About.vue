@@ -1,9 +1,9 @@
 <template>
-  <div class="about">
+  <main class="about">
     <img src="../assets/logo.png">
     <h1>This is an about page</h1>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  </main>
 </template>
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'

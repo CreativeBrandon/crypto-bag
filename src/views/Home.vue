@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="home">
     <h1>Trending Cryptos</h1>
 
     <atom-spinner v-if="isLoading"
@@ -8,7 +8,7 @@
         :color="'#ff1d5e'" />
 
     <coinList :coins="coins" />
-  </div>
+  </main>
 </template>
 
 <style scoped >

@@ -7,7 +7,7 @@ import * as actionTypes from '@/store/coins/action-types'
 import * as getters from '@/store/coins/getter-types'
 import * as mutations from '@/store/coins/mutation-types'
 import { Coin } from '@/types/coins'
-import { coinMock } from 'test/mocks'
+import { coinMock } from '../../../test/mocks'
 
 jest.mock('axios')
 

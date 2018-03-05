@@ -33,8 +33,4 @@
 nav a {
     margin: 0 10px;
 }
-
-nav a.active {
-    color: var(--main-color);
-}
 </style>
