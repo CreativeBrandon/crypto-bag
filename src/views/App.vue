@@ -3,7 +3,7 @@
     <Header />
     <Tray />
     
-    <v-container class="container">
+    <v-container>
       <router-view></router-view>
     </v-container>
     
@@ -14,17 +14,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
-const Footer = () => import('@/components/Footer.vue')
-const Header = () => import('@/components/Header.vue')
-const Tray = () => import('@/components/tray/Tray.vue')
-
 Component.registerHooks(['metaInfo'])
 
 @Component({
   components: {
-    Footer,
-    Header,
-    Tray
+    Footer: () => import('@/components/Footer.vue'),
+    Header: () => import('@/components/Header.vue'),
+    Tray: () => import('@/components/tray/Tray.vue')
   }
 })
 export default class App extends Vue {
