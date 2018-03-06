@@ -16,7 +16,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
 const Footer = () => import('@/components/Footer.vue')
 const Header = () => import('@/components/Header.vue')
-const Tray = () => import('@/components/Tray.vue')
+const Tray = () => import('@/components/tray/Tray.vue')
 
 Component.registerHooks(['metaInfo'])
 
