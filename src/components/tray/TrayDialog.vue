@@ -34,7 +34,10 @@ export default class TrayDialog extends Vue {
   close() {}
 
   create(name: string) {
-    if (this.name) this.$emit('create', this.name)
+    if (this.name) {
+      this.$emit('create', this.name)
+      this.name = null
+    }
   }
 }
 </script>

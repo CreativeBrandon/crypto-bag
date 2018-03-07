@@ -18,8 +18,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-
-import { } from 'Vue'
+import { Action, Getter, Mutation } from 'vuex-class'
+import * as actions from '@/store/bags/action-types'
+import * as getters from '@/store/bags/getter-types'
+import { Bag } from '@/types'
 
 const TrayDialog = () => import('./TrayDialog.vue')
 
@@ -29,9 +31,14 @@ const TrayDialog = () => import('./TrayDialog.vue')
 export default class Tray extends Vue {
   show: boolean = false
 
+  @Action(actions.ADD_BAG) addBag: any
+  @Getter(getters.GET_BAGS) getBags: Bag[]
+
+  created() {}
+
   createBag(name: string) {
     this.show = false
-    // ToDo: add in store
+    this.addBag(name)
   }
 }
 </script>
