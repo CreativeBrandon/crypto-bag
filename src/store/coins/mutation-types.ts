@@ -1,6 +1,5 @@
-import { State } from './store'
 import * as utils from '@/utils'
-import { Coin } from '@/types/coins'
+import { Coin, CoinState as State } from '@/types'
 
 export const FETCH_COINS_SUCCESS = '[COINS] FETCH COINS SUCCESS'
 export type FETCH_COINS_SUCCESS = typeof FETCH_COINS_SUCCESS

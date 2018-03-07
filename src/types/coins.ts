@@ -1,7 +1,7 @@
-export interface CoinsEntities {
+export interface Entities {
     loaded: boolean
     isLoading: boolean
-    ids: string[]
+    ids: Array<number | string>
     byIds: ByIds
 }
 
@@ -29,4 +29,9 @@ export interface Coin {
 
 export interface ByIds {
     [index: string]: Coin
+}
+
+export interface CoinState {
+    entities: Entities
+    errors: {}
 }

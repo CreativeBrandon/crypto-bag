@@ -1,4 +1,4 @@
-import { State } from './store'
+import { CoinState as State } from '@/types'
 
 export const GET_COINS = '[COINS] GET COINS'
 export type GET_COINS = typeof GET_COINS

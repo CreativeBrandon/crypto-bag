@@ -1,16 +1,9 @@
 import Vue from 'vue'
 import Vuex, { ActionTree, GetterTree, MutationTree } from 'vuex'
-import { CoinsEntities } from '@/types/coins'
+import { CoinState as State } from '@/types'
 import * as action from './action-types'
 import * as getter from './getter-types'
 import * as mutation from './mutation-types'
-
-Vue.use(Vuex)
-
-export interface State {
-    entities: CoinsEntities
-    errors: {}
-}
 
 export const mutations: MutationTree<State> = {
     [mutation.FETCH_COINS_SUCCESS]: mutation.fetchCoinsSuccess,

@@ -1,5 +1,5 @@
 import { ActionContext } from 'vuex'
-import { State } from './store'
+import { CoinState as State } from '@/types'
 import * as mutation from './mutation-types'
 import { coinsService } from '@/services/coins.service'
 

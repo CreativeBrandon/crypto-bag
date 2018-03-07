@@ -22,7 +22,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Action, Getter, Mutation } from 'vuex-class'
 import * as actions from '@/store/coins/action-types'
 import * as getters from '@/store/coins/getter-types'
-import { Coin } from '@/types/coins'
+import { Coin } from '@/types'
 
 const AtomSpinner = () => import('epic-spinners/src/components/lib/AtomSpinner.vue')
 const coinList = () => import('@/components/coins/CoinList.vue')
