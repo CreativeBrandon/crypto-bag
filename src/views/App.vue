@@ -50,12 +50,12 @@ export default class App extends Vue {
 }
 
 aside {
-  border-right: thin solid #CCC;
+  border-right: thin solid var(--border-color);
   grid-area: a;
 }
 
 footer {
-  border-top: thin solid #CCC;
+  border-top: thin solid var(--border-color);
   grid-area: f;
 }
 

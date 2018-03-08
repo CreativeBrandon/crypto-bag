@@ -14,7 +14,7 @@
 @import '../styles/vars.css';
 
 .header {
-    border-bottom: solid thin #ccc;
+    border-bottom: solid thin var(--border-color);
     display: flex;
     align-items: center;
     padding: 15px 20px;

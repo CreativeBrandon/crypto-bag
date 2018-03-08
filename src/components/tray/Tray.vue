@@ -3,7 +3,7 @@
     <h3 class="heading">Bags</h3>
     
     <v-tooltip right>
-      <v-btn color="indigo" dark fab flex small slot="activator" @click.stop="show = true">
+      <v-btn color="indigo" dark fab flex small slot="activator" @click.stop="show = !show">
         <v-icon>add</v-icon>
       </v-btn>
       <span>Create new Bag</span>
@@ -13,6 +13,8 @@
       :show="show"
       @close="show = false"
       @create="createBag" />
+
+    <TrayList :bags="bags" />
   </aside>
 </template>
 
@@ -24,9 +26,10 @@ import * as getters from '@/store/bags/getter-types'
 import { Bag } from '@/types'
 
 const TrayDialog = () => import('./TrayDialog.vue')
+const TrayList = () => import('./TrayList.vue')
 
 @Component({
-  components: { TrayDialog }
+  components: { TrayDialog, TrayList }
 })
 export default class Tray extends Vue {
   show: boolean = false
@@ -36,8 +39,12 @@ export default class Tray extends Vue {
 
   created() {}
 
+  get bags() {
+    return this.getBags.reverse()
+  }
+
   createBag(name: string) {
-    this.show = false
+    this.show = !this.show
     this.addBag(name)
   }
 }
@@ -51,6 +58,7 @@ export default class Tray extends Vue {
 }
 
 .tray {
-  padding: 15px 0 0;
+  max-width: 150px;
+  padding: 15px;
 }
 </style>
