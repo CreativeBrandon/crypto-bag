@@ -1,12 +1,15 @@
 <template>
   <section class="tray-list">
-    <ul v-if="bags">
+    <ul v-if="bags.length > 0">
+      <transition-group name="list" tag="p">
         <li v-for="bag in bags" :key="bag.name" class="list-item">
           <router-link to="/bag">
+            <span class="count">{{ bag.coins.length }}</span>
             <img class="list-icon" src="../../assets/bag.svg" alt="bag icon" />
             <span class="list-name">{{ bag.name }}</span>
           </router-link>
         </li>
+      </transition-group>
     </ul>
   </section> 
 </template>
@@ -28,6 +31,28 @@ a {
   display: block;
 }
 
+.count {
+  background-color: red;
+  border-radius: 50%;
+  color: #FFF;
+  font-size: 0.65em;
+  padding: 0.2em 0.4em;
+  position: absolute;
+  top: 0;
+  right: 28px;
+}
+
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.7s;
+}
+
 .list-icon {
   display: block;
   height: 35px;
@@ -38,6 +63,7 @@ a {
   display: block;
   justify-content: center;
   padding: 8px 0;
+  position: relative;
 }
 
 .list-name {
