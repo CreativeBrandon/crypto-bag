@@ -11,6 +11,13 @@
         </li>
       </transition-group>
     </ul>
+
+    <transition v-else name="fade">
+      <div class="placeholder">
+        <img class="list-icon" src="../../assets/bag.svg" alt="bag icon" />
+        Create a bag above and keep track of your moon missions :)
+      </div>
+    </transition>
   </section> 
 </template>
 
@@ -34,12 +41,23 @@ a {
 .count {
   background-color: red;
   border-radius: 50%;
-  color: #FFF;
+  color: #fff;
   font-size: 0.65em;
   padding: 0.2em 0.4em;
   position: absolute;
-  top: 0;
   right: 28px;
+  top: 0;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.7s;
 }
 
 .list-enter,

@@ -7,6 +7,7 @@
         <v-text-field
           color="indigo"
           label="Your new bag name"
+          ref="name"
           v-model="name"
           required
         />
@@ -28,10 +29,15 @@ import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class TrayDialog extends Vue {
   name: string | null = null
+  $refs: { name: HTMLFormElement }
   @Prop() show?: boolean
 
   @Emit('close')
   close() {}
+
+  mounted() {
+    this.$nextTick(() => this.$refs.name.focus())
+  }
 
   create(name: string) {
     if (this.name) {
