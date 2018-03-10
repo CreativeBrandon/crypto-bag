@@ -1,25 +1,12 @@
 <template>
-    <div class="coin-detail">
+    <li class="coin-detail">
         <img class="icon" :src="iconPath" :alt="coin.name" />
         <h3 class="name">{{coin.rank}} {{coin.name}}</h3>
         <div><span>Price:</span> {{coin.price_usd | currency}} USD</div>
         <div><span>Sat:</span> {{coin.price_btc}} /BTC</div>
         <div><span>Market Cap:</span> {{coin.market_cap_usd | currency}}</div>
-    </div>
+    </li>
 </template>
-
-<style scoped >
-.coin-detail {
-  margin-bottom: 20px;
-}
-.icon {
-  height: 32px;
-  max-width: 100px;
-}
-span {
-  font-weight: 600;
-}
-</style>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
@@ -41,3 +28,16 @@ export default class CoinDetail extends Vue {
   }
 }
 </script>
+
+<style scoped >
+.coin-detail {
+  margin-bottom: 20px;
+}
+.icon {
+  height: 32px;
+  max-width: 100px;
+}
+span {
+  font-weight: 600;
+}
+</style>

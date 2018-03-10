@@ -1,12 +1,12 @@
-import axios, { AxiosPromise} from 'axios'
+import axios, { AxiosPromise } from 'axios'
 import { Coin, CoinsResponse } from '@/types/coins'
 import { resolve } from 'path'
 import coins from './coins.json'
 
-const API = 'https://API.coinmarketcap.com/v1'
+const API = 'https://api.coinmarketcap.com/v1'
 
 class CoinsService {
-    constructor() { /**/ }
+    constructor() { }
 
     delay(timeout: number) {
         return new Promise(resolve => {
@@ -15,7 +15,7 @@ class CoinsService {
     }
 
     coins(): Promise<CoinsResponse> {
-        return new Promise(resolve => resolve({data: coins}))
+        return new Promise(resolve => resolve({ data: coins }))
     }
 
     fetchCoinsOffline(limit: number = 20): Promise<CoinsResponse> {

@@ -1,9 +1,11 @@
 <template>
     <section class="coin-list">
-        <coinDetail 
-            v-for="coin in coins"
-            :coin="coin"
-            :key="coin.id" />
+        <ul>
+            <coinDetail 
+                v-for="coin in coins"
+                :coin="coin"
+                :key="coin.id" />
+        </ul>
     </section>
 </template>
 
@@ -20,3 +22,9 @@ export default class CoinList extends Vue {
     @Prop() coins?: Coin[]
 }
 </script>
+
+<style scoped>
+.coin-list {
+    margin: 20px 0;
+}
+</style>
