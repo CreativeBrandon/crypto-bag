@@ -41,31 +41,33 @@ export default class App extends Vue {
 
 .application--wrap {
   display: grid;
+  grid-template-areas:
+    'h h h h h h h h h h h h'
+    'a m m m m m m m m m m m'
+    'f f f f f f f f f f f f';
+  grid-template-columns: 125px auto;
   grid-template-rows: 60px auto 80px;
-	grid-template-areas:
-		'h h h h h h h h h h h h'
-		'a m m m m m m m m m m m'
-		'f f f f f f f f f f f f';
-	height: 100%;
-}
-
-aside {
-  border-right: thin solid var(--border-color);
-  grid-area: a;
-}
-
-footer {
-  border-top: thin solid var(--border-color);
-  grid-area: f;
-}
-
-header {
-  grid-area: h;
+  height: 100%;
 }
 
 .container {
   grid-area: m;
   height: 100%;
   max-width: 100%;
+  text-align: initial;
+}
+
+.footer {
+  border-top: thin solid var(--border-color);
+  grid-area: f;
+}
+
+.header {
+  grid-area: h;
+}
+
+.tray {
+  border-right: thin solid var(--border-color);
+  grid-area: a;
 }
 </style>

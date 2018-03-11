@@ -1,6 +1,6 @@
 <template>
   <main class="home">
-    <h1>Trending Cryptos</h1>
+    <h1 class="title">Trending Cryptos</h1>
 
     <atom-spinner v-if="isLoading"
         :animation-duration="1000"
@@ -10,12 +10,6 @@
     <coinList :coins="coins" />
   </main>
 </template>
-
-<style scoped >
-.atom-spinner {
-  margin: 0 auto;
-}
-</style>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
@@ -40,3 +34,18 @@ export default class Home extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.atom-spinner {
+  margin: 0 auto;
+}
+
+.home >>> .coin-list {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+}
+</style>

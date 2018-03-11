@@ -58,7 +58,7 @@ export default class Tray extends Vue {
 }
 
 .tray {
-  max-width: 150px;
+  font-size: 0.8em;
   padding: 15px;
 }
 </style>

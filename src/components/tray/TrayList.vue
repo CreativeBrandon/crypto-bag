@@ -57,7 +57,7 @@ a {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.7s;
+  transition: all 0.5s;
 }
 
 .list-enter,
@@ -68,7 +68,7 @@ a {
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.7s;
+  transition: all 0.5s;
 }
 
 .list-icon {
@@ -86,14 +86,16 @@ a {
 
 .list-name {
   display: block;
-  font-size: 0.9em;
   line-height: 1.3em;
   text-transform: capitalize;
+}
+
+.placeholder {
+  padding: 20px 0;
 }
 
 .tray-list {
   border-top: solid thin var(--border-color);
   margin-top: 15px;
-  padding: 15px 0;
 }
 </style>

@@ -40,3 +40,9 @@ export default class About extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.about{
+  text-align: center;
+}
+</style>
