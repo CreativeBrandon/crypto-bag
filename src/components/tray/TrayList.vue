@@ -2,8 +2,8 @@
   <section class="tray-list">
     <ul v-if="bags.length > 0">
       <transition-group name="list" tag="p">
-        <li v-for="bag in bags" :key="bag.name" class="list-item">
-          <router-link to="/bag">
+        <li v-for="(bag, index) in bags" :index="index" :key="bag.id" class="list-item">
+          <router-link :to="`/bag/${bag.id}`">
             <span class="count">{{ bag.coins.length }}</span>
             <img class="list-icon" src="../../assets/bag.svg" alt="bag icon" />
             <span class="list-name">{{ bag.name }}</span>
@@ -45,8 +45,8 @@ a {
   font-size: 0.65em;
   padding: 0.2em 0.4em;
   position: absolute;
-  right: 28px;
-  top: 0;
+  margin-left: 7px;
+  top: -6px;
 }
 
 .fade-enter,
@@ -74,19 +74,20 @@ a {
 .list-icon {
   display: block;
   height: 35px;
-  margin: auto auto 3px;
+  margin: auto auto 5px;
 }
 
 .list-item {
   display: block;
   justify-content: center;
-  padding: 8px 0;
+  margin: 20px 0;
   position: relative;
 }
 
 .list-name {
   display: block;
   font-size: 0.9em;
+  line-height: 1.3em;
   text-transform: capitalize;
 }
 
