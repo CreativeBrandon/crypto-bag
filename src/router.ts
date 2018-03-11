@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
 
 const About = () => import('@/views/About.vue')
+const Bag = () => import('@/views/Bag.vue')
 const Home = () => import('@/views/Home.vue')
 const NotFoundPage = () => import('@/views/NotFound.vue')
 
@@ -22,13 +23,19 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/home',
-      redirect: '/'
-    },
-    {
       path: '/about',
       name: 'about',
       component: About,
+    },
+    {
+      path: '/bag/:id',
+      name: 'bag',
+      props: true,
+      component: Bag,
+    },
+    {
+      path: '/home',
+      redirect: '/'
     },
     {
       path: '/404',

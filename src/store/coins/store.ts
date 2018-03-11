@@ -11,6 +11,7 @@ export const mutations: MutationTree<State> = {
     [mutation.LOADING]: (state: State) => state.entities.isLoading = true
 }
 
+// any = RootState
 export const getters: GetterTree<State, any> = {
     [getter.GET_COINS]: state => state.entities.ids.map(id => state.entities.byIds[id]),
     [getter.IS_LOADING]: state => state.entities.isLoading
