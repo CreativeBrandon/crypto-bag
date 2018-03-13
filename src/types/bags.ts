@@ -9,4 +9,5 @@ export interface Bag {
 export interface BagState {
     entities: Entities
     errors: {}
+    isEditing: boolean
 }
