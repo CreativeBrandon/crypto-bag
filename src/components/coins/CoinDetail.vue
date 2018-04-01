@@ -14,7 +14,7 @@
         </div>
         <div class="price">
           <h4 class="heading">Satoshi</h4>
-          <span class="data">{{coin.price_btc}} /BTC</span>
+          <span class="data">{{coin.price_btc}} BTC</span>
         </div>
       </div>
       <div class="market-cap">

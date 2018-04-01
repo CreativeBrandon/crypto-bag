@@ -1,9 +1,4 @@
-export interface Entities {
-    loaded: boolean
-    isLoading: boolean
-    ids: Array<number | string>
-    byIds: ByIds
-}
+import { Entities } from '@/types'
 
 export interface CoinsResponse {
     data: Coin[]
@@ -25,10 +20,6 @@ export interface Coin {
     percent_change_24h: number
     percent_change_7d: number
     last_updated: number
-}
-
-export interface ByIds {
-    [index: string]: Coin
 }
 
 export interface CoinState {
