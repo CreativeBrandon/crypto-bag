@@ -8,6 +8,8 @@ export type ADD_BAG = typeof ADD_BAG
 export const IS_EDITING = 'IS EDITING'
 export type IS_EDITING = typeof IS_EDITING
 
+export const SAVE_BAG = 'SAVE BAG'
+export type SAVE_BAG = typeof SAVE_BAG
 
 export const addBag = (context: ActionContext<State, RootState>, name: string) => {
     const newBag = { id: Math.floor(Math.random() * 1000) + 1, name, coins: [] } as Bag
@@ -17,3 +19,6 @@ export const addBag = (context: ActionContext<State, RootState>, name: string) =
 
 export const isEditing = (context: ActionContext<State, RootState>, editingState: boolean = false) =>
     context.commit(mutations.IS_EDITING, editingState)
+
+export const saveBag = (context: ActionContext<State, RootState>, payload: Bag) =>
+    context.commit(mutations.SAVE_BAG, payload)
