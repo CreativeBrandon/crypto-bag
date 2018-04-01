@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex, { ActionTree, GetterTree, MutationTree } from 'vuex'
-import { BagState as State, RootState } from '@/types'
+import { BagState as State, RootState, Bag } from '@/types'
 import * as getter from './getter-types'
 import * as action from './action-types'
 import * as mutation from './mutation-types'
 
 export const mutations: MutationTree<State> = {
     [mutation.ADD_BAG]: mutation.addBag,
-    [mutation.IS_EDITING]: (state: State, payload: boolean) => state.isEditing = payload
+    [mutation.IS_EDITING]: (state: State, payload: boolean) => state.isEditing = payload,
+    [mutation.SAVE_BAG]: mutation.saveBag
 }
 
 export const getters: GetterTree<State, RootState> = {
@@ -18,7 +19,8 @@ export const getters: GetterTree<State, RootState> = {
 
 export const actions: ActionTree<State, RootState> = {
     [action.ADD_BAG]: action.addBag,
-    [action.IS_EDITING]: action.isEditing
+    [action.IS_EDITING]: action.isEditing,
+    [action.SAVE_BAG]: action.saveBag
 }
 
 export const state = (): State => {

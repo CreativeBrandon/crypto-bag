@@ -8,14 +8,20 @@
           <span v-show="!isEditing">{{bag.name}}</span>
         </h1>
 
-        <button v-if="isEditing" class="btn" @click="save">Save</button>
-        <button v-else class="btn" @click="edit">Edit <v-icon>edit</v-icon></button>
+        <template v-if="isEditing">
+          <v-btn flat light small @click="edit">Cancel</v-btn>
+          <v-btn flat light outline small @click="save">Save</v-btn>
+        </template>
+        
+        <template v-else>
+          <v-btn flat light outline small @click="edit">Edit</v-btn>
+        </template>
       </div>
     </section>
     
     <section v-else class="placeholder">
       <h1>Uh Oh...</h1>
-      Sorry this Bag does not exists :(
+      <p>Sorry this Bag does not exists :(</p>
     </section>
     
   </main>
@@ -27,10 +33,10 @@ import { Action, Getter, Mutation } from 'vuex-class'
 import * as actions from '@/store/bags/action-types'
 import * as getters from '@/store/bags/getter-types'
 import { Bag } from '@/types'
-import { URLSearchParams } from 'url'
 
 @Component({})
 export default class BagPage extends Vue {
+
   @Action(actions.IS_EDITING) commitIsEditing: (status: boolean) => void
   @Action(actions.SAVE_BAG) saveBag: (bag: Bag) => void
   @Getter(getters.GET_BAG) getBag?: any
@@ -44,8 +50,6 @@ export default class BagPage extends Vue {
     if (isEditing) this.$nextTick(() => this.$refs.name.focus())
   }
 
-  created() {}
-
   edit() {
     this.commitIsEditing(!this.isEditing)
   }
@@ -53,8 +57,8 @@ export default class BagPage extends Vue {
   save() {
     const bag = this.bag as Bag
     bag.name = this.$refs.name.value
-    this.saveBag(bag)
     this.edit()
+    this.saveBag(bag)
   }
 
   get bag(): Bag {
@@ -65,10 +69,9 @@ export default class BagPage extends Vue {
 
 <style scoped>
 .bag-header,
-.bag-title input {
+.bag-title input,
+.placeholder {
   text-align: center;
-}
-.btn {
-  display: inline-block;
+  width: 100%;
 }
 </style>

@@ -11,8 +11,9 @@ export type IS_EDITING = typeof IS_EDITING
 export const LOADING = '[BAGS] LOADING'
 export type LOADING = typeof LOADING
 
-export const SAVE_BAG = 'SAVE BAG'
+export const SAVE_BAG = '[BAGS] SAVE BAG'
 export type SAVE_BAG = typeof SAVE_BAG
+
 
 export const addBag = (state: State, payload: Bag) => {
     state.entities = {
