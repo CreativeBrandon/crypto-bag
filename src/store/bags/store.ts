@@ -7,6 +7,7 @@ import * as mutation from './mutation-types'
 
 export const mutations: MutationTree<State> = {
     [mutation.ADD_BAG]: mutation.addBag,
+    [mutation.DELETE_BAG]: mutation.deleteBag,
     [mutation.IS_EDITING]: (state: State, payload: boolean) => state.isEditing = payload,
     [mutation.SAVE_BAG]: mutation.saveBag
 }
@@ -19,6 +20,7 @@ export const getters: GetterTree<State, RootState> = {
 
 export const actions: ActionTree<State, RootState> = {
     [action.ADD_BAG]: action.addBag,
+    [action.DELETE_BAG]: action.deleteBag,
     [action.IS_EDITING]: action.isEditing,
     [action.SAVE_BAG]: action.saveBag
 }
