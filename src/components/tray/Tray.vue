@@ -9,7 +9,8 @@
       <span>Create new Bag</span>
     </v-tooltip>
 
-    <TrayDialog 
+    <TrayDialog
+      ref="dialog"
       :show="show"
       @close="show = false"
       @create="createBag" />
@@ -19,25 +20,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator'
 import { Action, Getter, Mutation } from 'vuex-class'
 import * as actions from '@/store/bags/action-types'
 import * as getters from '@/store/bags/getter-types'
 import { Bag } from '@/types'
+import TrayDialog from '@/components/tray/TrayDialog.vue'
 
-const TrayDialog = () => import('./TrayDialog.vue')
 const TrayList = () => import('./TrayList.vue')
 
 @Component({
   components: { TrayDialog, TrayList }
 })
 export default class Tray extends Vue {
-  show: boolean = false
 
   @Action(actions.ADD_BAG) addBag: any
   @Getter(getters.GET_BAGS) getBags: Bag[]
+  $refs: { dialog: TrayDialog }
+  show: boolean = false
 
-  created() {}
+  @Watch('show')
+  onIsEditing(show: boolean) {
+    if (show) this.$nextTick(() => this.$refs.dialog.$refs.name.focus())
+  }
 
   get bags() {
     return this.getBags.reverse()
