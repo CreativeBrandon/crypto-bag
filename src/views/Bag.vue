@@ -26,27 +26,28 @@
 
       <section class="bag-content">
         <h2 class="bag-heading">Coins</h2>
-        <p class="bag-placeholder">Add coins to your bag above</p>
+        <Placeholder isSolo="true" copy="Add coins to your bag above" />
       </section>
     </div>
-    
-    <div v-else class="placeholder">
-      <h1>Uh Oh...</h1>
-      <p>Sorry this Bag does not exists :(</p>
-    </div>
+
+    <Placeholder v-else isSolo="true" title="Uh Oh..." copy="Sorry this Bag does not exists :(" />
     
   </main>
 </template>
 
 <script lang="ts">
-import Router from 'vue-router'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import { Action, Getter, Mutation } from 'vuex-class'
+import Router from 'vue-router'
 import * as actions from '@/store/bags/action-types'
 import * as getters from '@/store/bags/getter-types'
 import { Bag } from '@/types'
 
-@Component({})
+@Component({
+  components: {
+    Placeholder: () => import('@/components/Placeholder.vue'),
+  }
+})
 export default class BagPage extends Vue {
 
   @Action(actions.IS_EDITING) commitIsEditing: (status: boolean) => void
@@ -57,6 +58,7 @@ export default class BagPage extends Vue {
   @Prop() id: string // url param
   $refs: { name: HTMLFormElement }
   $router: Router
+  show: boolean = false
 
 
   @Watch('isEditing')
@@ -116,5 +118,9 @@ export default class BagPage extends Vue {
 .placeholder {
   text-align: center;
   width: 100%;
+}
+
+.placeholder >>> .title {
+  margin-bottom: 20px;
 }
 </style>

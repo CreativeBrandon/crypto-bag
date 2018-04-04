@@ -13,11 +13,9 @@
     </ul>
 
     <transition v-else name="fade">
-      <div class="placeholder">
-        <img class="list-icon" src="../../assets/bag.svg" alt="bag icon" />
-        Create a bag above and keep track of your moon missions :)
-      </div>
+      <Placeholder copy="Create a bag above and keep track of your moon missions :)" image="bag.svg" />
     </transition>
+
   </section> 
 </template>
 
@@ -25,7 +23,11 @@
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
 import { Bag } from '@/types'
 
-@Component
+@Component({
+  components: {
+    Placeholder: () => import('@/components/Placeholder.vue'),
+  }
+})
 export default class TrayList extends Vue {
   @Prop() bags: Bag[]
 }
@@ -71,7 +73,8 @@ a {
   transition: all 0.5s;
 }
 
-.list-icon {
+.list-icon,
+.placeholder >>> .icon {
   display: block;
   height: 35px;
   margin: auto auto 5px;

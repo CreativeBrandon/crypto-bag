@@ -34,7 +34,7 @@ const TrayList = () => import('./TrayList.vue')
 })
 export default class Tray extends Vue {
 
-  @Action(actions.ADD_BAG) addBag: any
+  @Action(actions.ADD_BAG) addBag: (name: string) => void
   @Getter(getters.GET_BAGS) getBags: Bag[]
   $refs: { dialog: TrayDialog }
   show: boolean = false
