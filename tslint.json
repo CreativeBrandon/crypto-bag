@@ -3,6 +3,9 @@
   "extends": [
     "tslint:recommended"
   ],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts", "node_modules/**/*.vue"]
+  },
   "rules": {
     "arrow-parens": false,
     "curly": [true, "ignore-same-line"],
@@ -17,6 +20,6 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "semicolon": [false, "never"],
-    "trailing-comma": false    
+    "trailing-comma": false
   }
 }
