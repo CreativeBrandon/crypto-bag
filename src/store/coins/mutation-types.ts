@@ -1,5 +1,5 @@
 import * as utils from '@/utils'
-import { Coin, CoinState as State } from '@/types'
+import { Coin, CoinState as State, CoinSearch } from '@/types'
 
 export const FETCH_COINS_SUCCESS = '[COINS] FETCH COINS SUCCESS'
 export type FETCH_COINS_SUCCESS = typeof FETCH_COINS_SUCCESS
@@ -9,6 +9,10 @@ export type FETCH_COINS_ERROR = typeof FETCH_COINS_ERROR
 
 export const LOADING = '[COINS] LOADING'
 export type LOADING = typeof LOADING
+
+export const SEARCH_RESULTS = '[COINS] SEARCH_RESULTS'
+export type SEARCH_RESULTS = typeof SEARCH_RESULTS
+
 
 export const fetchCoinsSuccess = (state: State, payload: Coin[]) => {
     state.entities = {

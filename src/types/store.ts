@@ -1,4 +1,4 @@
-import { Bag, BagState, Coin, CoinState } from "@/types"
+import { Bag, BagState, Coin, CoinState } from '@/types'
 
 export interface Entities {
     loaded: boolean

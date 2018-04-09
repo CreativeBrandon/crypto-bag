@@ -18,13 +18,18 @@ class CoinsService {
         return new Promise(resolve => resolve({ data: coins }))
     }
 
+    fetchCoins(limit: number = 10): AxiosPromise<CoinsResponse> {
+        return axios.get<CoinsResponse>(`${API}/ticker/?limit=${limit}`)
+    }
+
     fetchCoinsOffline(limit: number = 20): Promise<CoinsResponse> {
         return this.delay(500)
             .then(() => this.coins())
     }
 
-    fetchCoins(limit: number = 10): AxiosPromise<CoinsResponse> {
-        return axios.get<CoinsResponse>(`${API}/ticker/?limit=${limit}`)
+    // Todo: Find a better API route to query
+    queryCoins(): AxiosPromise<Coin[]> {
+        return axios.get<Coin[]>(`${API}/ticker/`)
     }
 }
 

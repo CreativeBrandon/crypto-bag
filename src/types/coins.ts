@@ -22,7 +22,13 @@ export interface Coin {
     last_updated: number
 }
 
+export interface CoinSearch {
+    query: string
+    results: Coin[]
+}
+
 export interface CoinState {
     entities: Entities
     errors: {}
+    search: CoinSearch
 }
