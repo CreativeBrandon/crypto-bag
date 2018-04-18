@@ -4,7 +4,6 @@
 
 #app {
     @apply --typeography-theme;
-    text-align: center;
 }
 
 a {
@@ -21,10 +20,16 @@ a:focus {
     color: var(--indigo);
 }
 
+.application .theme--light.card,
+.theme--light .card {
+    color: var(--primary-font-color)
+}
+
 h1,
 h2 {
     font-weight: normal;
 }
+
 li {
     display: inline-block;
     margin: 0 10px;
