@@ -1,7 +1,7 @@
 <template>
     <li class="coin-detail">
       <div class="icon-container">
-        <img class="icon" :src="iconPath" :alt="coin.name" />
+        <img class="icon" v-if="cryptoIcon(coin.symbol)" :src="cryptoIcon(coin.symbol)" :alt="coin.name" />
       </div>
 
       <h3 class="name">{{coin.rank}} {{coin.name}}</h3>
@@ -27,23 +27,15 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { Coin } from '@/types/coins'
+import mixin from '@/mixins'
 
-@Component
+@Component({
+  mixins: [mixin]
+})
 export default class CoinDetail extends Vue {
   @Prop() coin?: Coin
-  iconPath: string = ''
 
-  created() {
-    const icon = this.coin
-      ? this.coin.symbol.toLowerCase().replace(/[0-9]/g, 'X')
-      : null
-    if (icon) this.setIconPath(icon)
-  }
-
-  setIconPath(icon: string) {
-    const iconPath = require(`@creativebrandon/cryptocurrency-icons/svg/color/${icon}.svg`)
-    if (iconPath) return (this.iconPath = iconPath)
-  }
+  created() { }
 }
 </script>
 
@@ -73,7 +65,6 @@ export default class CoinDetail extends Vue {
 .icon-container {
   text-align: center;
 }
-
 .market-cap {
   padding: 15px 0 0;
 }
