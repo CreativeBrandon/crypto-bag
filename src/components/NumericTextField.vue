@@ -4,19 +4,25 @@
     :color="color"
     :label="placeholder"
     required
-    v-model="value"
+    v-model="amount"
+    @focus="$event.target.select()"
     @keypress="onKeypress" />
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
+import { Component, Emit, Prop, Watch, Vue } from 'vue-property-decorator'
 import { isNumeric } from '@/utils'
 
 @Component
 export default class NumericTextField extends Vue {
-  @Prop({ default: 'indigo' }) color?: string
-  @Prop({ default: 'Amount of Coins' }) placeholder?: string
-  @Prop({ default: 0 }) value?: number
+  @Prop({ default: 'indigo' }) color: string
+  @Prop({ default: 'Amount of Coins' }) placeholder: string
+  amount: number = 0
+
+  @Watch('amount')
+  onAmount(val: string, oldVal: string) {
+    this.$emit('value', val)
+  }
 
   isAllowed(key: string): boolean {
     const allowedKeys = ['.', 'Backspace', 'Tab'] as string[]

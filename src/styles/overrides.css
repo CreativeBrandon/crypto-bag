@@ -1,0 +1,4 @@
+.application .theme--light.card,
+.theme--light .card {
+    color: var(--primary-font-color)
+}

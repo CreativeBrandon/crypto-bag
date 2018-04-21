@@ -1,4 +1,5 @@
 @import-normalize;
+@import 'overrides';
 @import 'vars';
 @import 'mixins';
 
@@ -18,11 +19,6 @@ a.active {
 a:hover,
 a:focus { 
     color: var(--indigo);
-}
-
-.application .theme--light.card,
-.theme--light .card {
-    color: var(--primary-font-color)
 }
 
 h1,

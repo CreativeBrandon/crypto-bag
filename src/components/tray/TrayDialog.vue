@@ -51,6 +51,9 @@ export default class TrayDialog extends Vue {
 <style scoped>
 @import '../../styles/vars.css';
 
+.card__actions {
+    text-align: center;
+}
 .headline {
   color: var(--primary-font-color);
   justify-content: center;
