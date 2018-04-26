@@ -9,11 +9,12 @@
             :placeholder="placeholder"
             role="combobox"
             v-model="searchInput"
+            @keypress.enter="clearSearch()"
             @keyup="onKeyup" />
 
         </header>
 
-        <div v-if="showResults" class="autocomplete-results">
+        <div v-if="search.isSearching" class="autocomplete-results">
           <h2 class="results-heading">Results for <span class="term">"{{ search.query }}"</span></h2>
           <ul class="results-list">
             <li class="results-list-item"
@@ -32,22 +33,26 @@
 
 <script lang="ts">
 import { Component, Emit, Prop, Vue } from 'vue-property-decorator'
-import { Coin, CoinSearch } from '@/types/coins'
+import { Action, State } from 'vuex-class'
+import * as coinActions from '@/store/coins/action-types'
+import { Coin, CoinSearch, CoinState } from '@/types'
 import mixin from '@/mixins'
 
 @Component({
   mixins: [mixin]
 })
 export default class Autocomplete extends Vue {
+  @Action(coinActions.CLEAR_COIN_SEARCH) clearSearch: () => void
+  @Action(coinActions.SEARCH_COINS) searchCoins: (query: string) => void
   @Prop({ default: 'autocomplete' }) id: string
   @Prop({ default: 3}) min: number
   @Prop({ default: 'Search' }) placeholder: string
-  @Prop() search: CoinSearch
-  searchInput: string = ''
+  @Prop({ default: ''}) value: string
+  @State('coins') coinState: CoinState
+  searchInput: string = this.value
 
-  get showResults() {
-    if (this.search.results.length > 0 && this.searchInput.length >= this.min) return true
-    return false
+  get search(): CoinSearch {
+    return this.coinState.search
   }
 
   // Todo: Throttle with RXJS
@@ -66,12 +71,14 @@ export default class Autocomplete extends Vue {
       'Tab'
     ] as string[]
 
-    if (ignoredKeys.indexOf(key) > -1) return false
+    if (ignoredKeys.includes(key)) return false
 
-    if (this.searchInput.length >= this.min) this.$emit('search', this.searchInput)
+    if (this.searchInput.length >= this.min) this.searchCoins(this.searchInput)
+    else if (this.searchInput.length === 0) this.clearSearch()
   }
 
   onSelect(coin: Coin) {
+    this.clearSearch()
     this.searchInput = coin.name
     this.$emit('selected', coin)
   }

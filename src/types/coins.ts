@@ -36,3 +36,8 @@ export interface CoinState {
     errors: {}
     search: CoinSearch
 }
+
+export interface Transaction {
+    amount: number
+    coin: string | null
+}
