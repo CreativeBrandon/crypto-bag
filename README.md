@@ -1,6 +1,9 @@
 # crypto-bag
 Manage your cryptocurrency holdings
 
+## Development
+`npm start`
+
 ## Testing
 `npm run test`
 Resources
