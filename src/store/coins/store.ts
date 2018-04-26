@@ -9,7 +9,8 @@ export const mutations: MutationTree<State> = {
     [mutation.FETCH_COINS_SUCCESS]: mutation.fetchCoinsSuccess,
     [mutation.FETCH_COINS_ERROR]: mutation.fetchCoinsError,
     [mutation.LOADING]: (state: State) => state.entities.isLoading = true,
-    [mutation.SEARCH_RESULTS]: (state: State, payload: CoinSearch) => state.search = payload
+    [mutation.SEARCH_RESULTS]: (state: State, payload: CoinSearch) => state.search = payload,
+    [mutation.CLEAR_COIN_SEARCH]: (state: State) => state.search = { isSearching: false, query: null, results: []}
 }
 
 // any = RootState
@@ -20,14 +21,16 @@ export const getters: GetterTree<State, any> = {
 
 export const actions: ActionTree<State, any> = {
     [action.FETCH_COINS]: action.fetchCoins,
-    [action.SEARCH_COINS]: action.searchCoins
+    [action.SEARCH_COINS]: action.searchCoins,
+    [action.CLEAR_COIN_SEARCH]: action.clearCoinSearch
 }
 
 export const state = (): State => {
     return {
       errors: {},
       search: {
-          query: '',
+          isSearching: false,
+          query: null,
           results: []
       },
       entities: {

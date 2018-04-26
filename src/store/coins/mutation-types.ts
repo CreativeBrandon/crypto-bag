@@ -13,6 +13,8 @@ export type LOADING = typeof LOADING
 export const SEARCH_RESULTS = '[COINS] SEARCH_RESULTS'
 export type SEARCH_RESULTS = typeof SEARCH_RESULTS
 
+export const CLEAR_COIN_SEARCH = '[COINS] CLEAR_COIN_SEARCH'
+export type CLEAR_COIN_SEARCH = typeof CLEAR_COIN_SEARCH
 
 export const fetchCoinsSuccess = (state: State, payload: Coin[]) => {
     state.entities = {

@@ -4,9 +4,12 @@ export interface CoinsResponse {
     data: Coin[]
 }
 
-export interface Coin {
+export interface BaseCoin {
     id: string
     name: string
+}
+
+export interface Coin extends BaseCoin {
     symbol: string
     rank: number
     price_usd: number
@@ -23,7 +26,8 @@ export interface Coin {
 }
 
 export interface CoinSearch {
-    query: string
+    isSearching: boolean
+    query: string | null
     results: Coin[]
 }
 

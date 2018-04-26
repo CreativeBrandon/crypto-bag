@@ -1,10 +1,9 @@
 import { ActionContext } from 'vuex'
 import { isMatch } from 'lodash'
-import { CoinState as State, RootState, Coin, CoinsResponse } from '@/types'
+import { CoinState as State, RootState, Coin, CoinSearch, CoinsResponse } from '@/types'
 import * as mutation from './mutation-types'
 import { coinsService } from '@/services/coins.service'
 
-// ACTIONS
 export const FETCH_COINS = '[COINS] FETCH_COINS'
 export type FETCH_COINS = typeof FETCH_COINS
 
@@ -16,6 +15,9 @@ export type FETCH_COINS_BY_CATEGORY = typeof FETCH_COINS_BY_CATEGORY
 
 export const SEARCH_COINS = '[COINS] SEARCH_COINS'
 export type SEARCH_COINS = typeof SEARCH_COINS
+
+export const CLEAR_COIN_SEARCH = '[COINS] CLEAR_COIN_SEARCH'
+export type CLEAR_COIN_SEARCH = typeof CLEAR_COIN_SEARCH
 
 
 export const fetchCoins = (context: ActionContext<State, RootState>) => {
@@ -33,8 +35,12 @@ export const searchCoins = (context: ActionContext<State, RootState>, query: str
         .queryCoins()
         .then(res => {
             const results = queryTerm(query, res.data)
-            context.commit(mutation.SEARCH_RESULTS, { query, results })
+            context.commit(mutation.SEARCH_RESULTS, { isSearching: true, query, results })
         })
+}
+
+export const clearCoinSearch = (context: ActionContext<State, RootState>) => {
+    context.commit(mutation.CLEAR_COIN_SEARCH)
 }
 
 // Temp workaround
