@@ -17,7 +17,8 @@ import { isNumeric } from '@/utils'
 export default class NumericTextField extends Vue {
   @Prop({ default: 'indigo' }) color: string
   @Prop({ default: 'Amount of Coins' }) placeholder: string
-  amount: number = 0
+  @Prop({ default: 0}) value: number
+  amount: number = this.value
 
   @Watch('amount')
   onAmount(val: string, oldVal: string) {
@@ -26,7 +27,7 @@ export default class NumericTextField extends Vue {
 
   isAllowed(key: string): boolean {
     const allowedKeys = ['.', 'Backspace', 'Tab'] as string[]
-    if (allowedKeys.indexOf(key) > -1 || isNumeric(key)) return true
+    if (allowedKeys.includes(key) || isNumeric(key)) return true
     return false
   }
 
