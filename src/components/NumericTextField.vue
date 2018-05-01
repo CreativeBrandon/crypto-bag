@@ -4,7 +4,7 @@
     :color="color"
     :label="placeholder"
     required
-    v-model="amount"
+    v-model.number="amount"
     @focus="$event.target.select()"
     @keypress="onKeypress" />
 </template>
@@ -22,7 +22,7 @@ export default class NumericTextField extends Vue {
 
   @Watch('amount')
   onAmount(val: string, oldVal: string) {
-    this.$emit('value', val)
+    this.$emit('value', Number(val))
   }
 
   isAllowed(key: string): boolean {

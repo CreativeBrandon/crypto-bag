@@ -1,13 +1,19 @@
-import { Entities } from '@/types'
+import { BaseTransaction, BaseEntities } from '@/types'
 
 export interface Bag {
     id: number
     name: string
-    coins: number[]
+    coins: BaseTransaction[]
+}
+
+export interface BagEntities extends BaseEntities {
+    byIds: {
+        [index: string]: Bag
+    }
 }
 
 export interface BagState {
-    entities: Entities
+    entities: BagEntities
     errors: {}
     isEditing: boolean
 }

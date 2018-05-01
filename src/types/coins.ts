@@ -1,4 +1,4 @@
-import { Entities } from '@/types'
+import { BaseEntities, BaseTransaction } from '@/types'
 
 export interface CoinsResponse {
     data: Coin[]
@@ -32,12 +32,17 @@ export interface CoinSearch {
 }
 
 export interface CoinState {
-    entities: Entities
+    entities: CoinEntities
     errors: {}
     search: CoinSearch
 }
 
-export interface Transaction {
-    amount: number
-    coin: string | null
+export interface CoinEntities extends BaseEntities {
+    byIds: {
+        [index: string]: Coin
+    }
+}
+
+export interface Transaction extends BaseTransaction {
+    bagId: number
 }

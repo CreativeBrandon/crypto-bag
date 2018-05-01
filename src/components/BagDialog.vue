@@ -11,11 +11,12 @@
             
             <v-layout wrap class="dialog-content">
 							<Autocomplete
+                :value="formModel.coin"
 								@selected="onSelectedCoin"
 								placeholder="Search coins..." />
 
                 <v-flex>
-                    <numeric-text-field @value="onAmountOfCoins" />
+                    <numeric-text-field :value="formModel.amount" @value="onAmountOfCoins" />
                 </v-flex>
             </v-layout>
             
@@ -32,10 +33,10 @@
 <script lang="ts">
 import { Component, Emit, Prop, Vue, Watch } from 'vue-property-decorator'
 import { isNumeric } from '@/utils'
-import { CoinSearch, Coin, Transaction } from '@/types/coins'
+import { CoinSearch, Coin, BaseTransaction } from '@/types'
 import Autocomplete from '@/components/Autocomplete.vue'
 
-const defaultTransaction = (): Transaction => ({ amount: 0, coin: null })
+const defaultTransaction = (): BaseTransaction => ({ amount: 0, coin: '' })
 
 @Component({
   components: {
@@ -47,9 +48,8 @@ const defaultTransaction = (): Transaction => ({ amount: 0, coin: null })
 })
 export default class BagDialog extends Vue {
   @Prop() show?: boolean
-  @Prop({ default: defaultTransaction })
-  transaction: Transaction
-  formModel: Transaction = defaultTransaction()
+  @Prop({ default: defaultTransaction }) transaction: BaseTransaction
+  formModel: BaseTransaction = this.transaction
 
   get amount() {
     return this.transaction.amount
@@ -86,8 +86,7 @@ export default class BagDialog extends Vue {
   }
 
   resetForm() {
-    this.formModel.amount = defaultTransaction().amount
-    this.formModel.coin = defaultTransaction().coin
+    this.formModel = this.transaction
   }
 }
 </script>
