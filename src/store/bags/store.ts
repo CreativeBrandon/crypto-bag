@@ -9,7 +9,8 @@ export const mutations: MutationTree<State> = {
     [mutation.ADD_BAG]: mutation.addBag,
     [mutation.DELETE_BAG]: mutation.deleteBag,
     [mutation.IS_EDITING]: (state: State, payload: boolean) => state.isEditing = payload,
-    [mutation.SAVE_BAG]: mutation.saveBag
+    [mutation.SAVE_BAG]: mutation.saveBag,
+    [mutation.ADD_TRANSACTION]: mutation.addTransaction
 }
 
 export const getters: GetterTree<State, RootState> = {
@@ -20,6 +21,7 @@ export const getters: GetterTree<State, RootState> = {
 
 export const actions: ActionTree<State, RootState> = {
     [action.ADD_BAG]: action.addBag,
+    [action.ADD_TRANSACTION]: action.addTransaction,
     [action.DELETE_BAG]: action.deleteBag,
     [action.IS_EDITING]: action.isEditing,
     [action.SAVE_BAG]: action.saveBag
@@ -32,8 +34,14 @@ export const state = (): State => {
         entities: {
             loaded: false,
             isLoading: false,
-            ids: [],
-            byIds: {}
+            ids: [1],
+            byIds: {
+                1: {
+                    id: 1,
+                    name: 'Utility Bags',
+                    coins: []
+                }
+            }
         }
     }
 }

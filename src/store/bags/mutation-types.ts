@@ -1,9 +1,12 @@
-import { BagState as State } from '@/types'
+import { BagState as State, Transaction, BaseTransaction } from '@/types'
 import * as utils from '@/utils'
 import { Bag } from '@/types'
 
 export const ADD_BAG = '[BAGS] ADD BAG'
 export type ADD_BAG = typeof ADD_BAG
+
+export const ADD_TRANSACTION = '[BAGS] ADD TRANSACTION'
+export type ADD_TRANSACTION = typeof ADD_TRANSACTION
 
 export const DELETE_BAG = '[BAGS] DELETE BAG'
 export type DELETE_BAG = typeof DELETE_BAG
@@ -32,6 +35,14 @@ export const addBag = (state: State, payload: Bag) => {
             [payload.id]: payload
         }
     }
+}
+
+export const addTransaction = (state: State, payload: Transaction) => {
+    const { amount, bagId, coin } = payload
+    const bag = state.entities.byIds[bagId] as Bag
+    const coinTransaction = { amount, coin } as BaseTransaction
+
+    state.entities.byIds[payload.bagId].coins.push(coinTransaction)
 }
 
 export const deleteBag = (state: State, payload: number) => {

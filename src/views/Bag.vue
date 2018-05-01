@@ -1,11 +1,11 @@
 <template>
   <main class="bag">
 
-    <div v-if="bag">
+    <template v-if="bag">
       <header class="bag-header">
         <h1 class="bag-title">
           <input v-show="isEditing" type="text" ref="name" :value="bag.name" @keydown.enter="save" />
-          <span v-show="!isEditing">{{bag.name}}</span>
+          <span v-show="!isEditing" @click="edit">{{bag.name}}</span>
         </h1>
 
         <template v-if="isEditing">
@@ -26,31 +26,45 @@
 
       <section class="bag-content">
         <h2 class="bag-heading">Coins</h2>
-        <Placeholder isSolo="true" copy="Add coins to your bag above" />
+        
+        <div class="flex text-xs-center bag-add-btn">
+          <v-btn color="indigo add-coins-btn" dark fab small @click.stop="show = !show">
+            <v-icon>add</v-icon>
+          </v-btn>
+          <div>Add coins</div>
+        </div>
       </section>
-    </div>
 
-    <Placeholder v-else isSolo="true" title="Uh Oh..." copy="Sorry this Bag does not exists :(" />
+      <bag-dialog 
+        :show="show"
+        @close="show = false"        
+        @submit="onAddTransaction" />
+
+    </template>
+
+    <Placeholder v-else :isSolo="true" title="Uh Oh..." copy="Sorry this Bag does not exists :(" />
     
   </main>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { Action, Getter, Mutation } from 'vuex-class'
+import { Action, Getter, Mutation, State } from 'vuex-class'
 import Router from 'vue-router'
 import * as actions from '@/store/bags/action-types'
 import * as getters from '@/store/bags/getter-types'
-import { Bag } from '@/types'
+import { Bag, CoinState, BaseTransaction, Transaction } from '@/types'
 
 @Component({
   components: {
-    Placeholder: () => import('@/components/Placeholder.vue'),
+    Autocomplete: () => import('@/components/Autocomplete.vue'),
+    'bag-dialog': () => import('@/components/BagDialog.vue'),
+    Placeholder: () => import('@/components/Placeholder.vue')
   }
 })
 export default class BagPage extends Vue {
-
-  @Action(actions.IS_EDITING) commitIsEditing: (status: boolean) => void
+  @Action(actions.ADD_TRANSACTION) addTransaction: (transaction: Transaction) => void
+  @Action(actions.IS_EDITING) userIsEditing: (status: boolean) => void
   @Action(actions.DELETE_BAG) deleteBag: (id: number) => void
   @Action(actions.SAVE_BAG) saveBag: (bag: Bag) => void
   @Getter(getters.GET_BAG) getBag?: any
@@ -66,13 +80,25 @@ export default class BagPage extends Vue {
     if (isEditing) this.$nextTick(() => this.$refs.name.focus())
   }
 
-  remove() {
-    this.deleteBag(this.bag.id)
-    this.$router.push('/home')
+  get bag(): Bag {
+    return this.getBag(this.id)
+  }
+
+  onAddTransaction(data: BaseTransaction) {
+    this.addTransaction({
+      amount: data.amount,
+      bagId: Number(this.id),
+      coin: data.coin
+    })
   }
 
   edit() {
-    this.commitIsEditing(!this.isEditing)
+    this.userIsEditing(!this.isEditing)
+  }
+
+  remove() {
+    this.deleteBag(this.bag.id)
+    this.$router.push('/home')
   }
 
   save() {
@@ -81,14 +107,14 @@ export default class BagPage extends Vue {
     this.edit()
     this.saveBag(bag)
   }
-
-  get bag(): Bag {
-    return this.getBag(this.id)
-  }
 }
 </script>
 
 <style scoped>
+.bag-add-btn {
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
 .bag-content {
   margin: 0 auto 30px;
   width: 75%;
@@ -111,6 +137,10 @@ export default class BagPage extends Vue {
 .bag-stats {
   margin: 0 auto 30px;
   width: 75%;
+}
+
+.bag-title span:hover {
+  cursor: pointer;
 }
 
 .bag-header,
