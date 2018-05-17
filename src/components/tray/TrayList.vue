@@ -1,6 +1,6 @@
 <template>
   <section class="tray-list">
-    <ul v-if="bags.length > 0">
+    <ul v-if="bags.length">
       <transition-group name="list" tag="p">
         <li v-for="(bag, index) in bags" :index="index" :key="bag.id" class="list-item">
           <router-link :to="`/bag/${bag.id}`">

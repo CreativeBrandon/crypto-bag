@@ -22,7 +22,7 @@ export default class NumericTextField extends Vue {
 
   @Watch('amount')
   onAmount(val: string, oldVal: string) {
-    this.$emit('value', Number(val))
+    this.$emit('onChange', Number(val))
   }
 
   isAllowed(key: string): boolean {

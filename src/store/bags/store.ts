@@ -16,6 +16,7 @@ export const mutations: MutationTree<State> = {
 export const getters: GetterTree<State, RootState> = {
     [getter.GET_BAG]: (state: State) => (id: number) => state.entities.byIds[id],
     [getter.GET_BAGS]: (state: State) => state.entities.ids.map(id => state.entities.byIds[id]),
+    [getter.GET_BAG_TRANSACTION]: (state: State) => (id: number) => state.entities.byIds[id].coins,
     [getter.IS_EDITING]: (state: State) => state.isEditing
 }
 
@@ -34,14 +35,8 @@ export const state = (): State => {
         entities: {
             loaded: false,
             isLoading: false,
-            ids: [1],
-            byIds: {
-                1: {
-                    id: 1,
-                    name: 'Utility Bags',
-                    coins: []
-                }
-            }
+            ids: [],
+            byIds: {}
         }
     }
 }

@@ -9,6 +9,7 @@ export interface BaseEntities {
 export interface BaseTransaction {
     amount: number
     coin: string
+    symbol?: string
 }
 
 export interface RootState {
