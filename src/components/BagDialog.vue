@@ -16,7 +16,7 @@
 								placeholder="Search coins..." />
 
                 <v-flex>
-                    <numeric-text-field :value="formModel.amount" @value="onAmountOfCoins" />
+                    <numeric-text-field :value="formModel.amount" @onChange="onAmountOfCoins" />
                 </v-flex>
             </v-layout>
             
@@ -49,7 +49,7 @@ const defaultTransaction = (): BaseTransaction => ({ amount: 0, coin: '' })
 export default class BagDialog extends Vue {
   @Prop() show?: boolean
   @Prop({ default: defaultTransaction }) transaction: BaseTransaction
-  formModel: BaseTransaction = this.transaction
+  formModel: BaseTransaction
 
   get amount() {
     return this.transaction.amount
@@ -57,6 +57,10 @@ export default class BagDialog extends Vue {
 
   set amount(amount: any) {
     this.transaction = amount
+  }
+
+  created() {
+    this.formModel = this.transaction
   }
 
   close() {
@@ -75,18 +79,18 @@ export default class BagDialog extends Vue {
 
   onSelectedCoin(coin: Coin) {
     this.formModel.coin = coin.name
+    this.formModel.symbol = coin.symbol
   }
 
   onSubmit() {
     if (this.isValid) {
       this.$emit('submit', this.formModel)
-      this.resetForm()
       this.close()
     }
   }
 
   resetForm() {
-    this.formModel = this.transaction
+    this.formModel = defaultTransaction()
   }
 }
 </script>

@@ -25,7 +25,8 @@
       </section>
 
       <section class="bag-content">
-        <h2 class="bag-heading">Coins</h2>
+        
+        <transaction-list :transactions="bag.coins" />
         
         <div class="flex text-xs-center bag-add-btn">
           <v-btn color="indigo add-coins-btn" dark fab small @click.stop="show = !show">
@@ -59,7 +60,8 @@ import { Bag, CoinState, BaseTransaction, Transaction } from '@/types'
   components: {
     Autocomplete: () => import('@/components/Autocomplete.vue'),
     'bag-dialog': () => import('@/components/BagDialog.vue'),
-    Placeholder: () => import('@/components/Placeholder.vue')
+    Placeholder: () => import('@/components/Placeholder.vue'),
+    'transaction-list': () => import('@/components/transactions/TransactionList.vue')
   }
 })
 export default class BagPage extends Vue {
@@ -67,13 +69,12 @@ export default class BagPage extends Vue {
   @Action(actions.IS_EDITING) userIsEditing: (status: boolean) => void
   @Action(actions.DELETE_BAG) deleteBag: (id: number) => void
   @Action(actions.SAVE_BAG) saveBag: (bag: Bag) => void
-  @Getter(getters.GET_BAG) getBag?: any
+  @Getter(getters.GET_BAG) getBag: (id: string) => Bag
   @Getter(getters.IS_EDITING) isEditing: boolean
   @Prop() id: string // url param
   $refs: { name: HTMLFormElement }
   $router: Router
   show: boolean = false
-
 
   @Watch('isEditing')
   onIsEditing(isEditing: boolean) {
@@ -86,9 +87,8 @@ export default class BagPage extends Vue {
 
   onAddTransaction(data: BaseTransaction) {
     this.addTransaction({
-      amount: data.amount,
-      bagId: Number(this.id),
-      coin: data.coin
+      ...data,
+      bagId: Number(this.id)
     })
   }
 
@@ -122,11 +122,6 @@ export default class BagPage extends Vue {
 
 .bag-header {
   margin-bottom: 30px;
-}
-
-.bag-heading {
-  border-bottom: solid thin #ccc;
-  padding-bottom: 10px;
 }
 
 .bag-placeholder {
