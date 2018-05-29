@@ -38,10 +38,9 @@ export const addBag = (state: State, payload: Bag) => {
 }
 
 export const addTransaction = (state: State, payload: Transaction) => {
-    const { amount, bagId, coin, symbol } = payload
-    const coinTransaction = { amount, coin, symbol } as BaseTransaction
-
-    state.entities.byIds[payload.bagId].coins.push(coinTransaction)
+    const { bagId, ...everythingElse } = payload
+    
+    state.entities.byIds[payload.bagId].coins.push(everythingElse)
 }
 
 export const deleteBag = (state: State, payload: number) => {

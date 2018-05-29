@@ -9,6 +9,8 @@ export interface BaseEntities {
 export interface BaseTransaction {
     amount: number
     coin: string
+    price_usd: number
+    price_btc: number
     symbol?: string
 }
 

@@ -23,7 +23,7 @@
             <v-card-actions>
                 <v-flex>
                     <v-btn color="indigo" flat @click.stop="close">Cancel</v-btn>
-										<v-btn color="indigo darken-1" :disabled="!isValid()" flat @click.native.stop="onSubmit">Add</v-btn>
+										<v-btn color="indigo darken-1" :disabled="!isValid" flat @click.native.stop="onSubmit">Add</v-btn>
                 </v-flex>
             </v-card-actions>
         </v-card>
@@ -36,7 +36,13 @@ import { isNumeric } from '@/utils'
 import { CoinSearch, Coin, BaseTransaction } from '@/types'
 import Autocomplete from '@/components/Autocomplete.vue'
 
-const defaultTransaction = (): BaseTransaction => ({ amount: 0, coin: '' })
+const defaultTransaction = (): BaseTransaction => ({
+  amount: 0,
+  coin: '',
+  price_usd: 0,
+  price_btc: 0,
+  symbol: ''
+})
 
 @Component({
   components: {
@@ -48,29 +54,24 @@ const defaultTransaction = (): BaseTransaction => ({ amount: 0, coin: '' })
 })
 export default class BagDialog extends Vue {
   @Prop() show?: boolean
-  @Prop({ default: defaultTransaction }) transaction: BaseTransaction
-  formModel: BaseTransaction
+  @Prop() transaction?: BaseTransaction
+  formModel: BaseTransaction = defaultTransaction()
 
   get amount() {
-    return this.transaction.amount
+    return this.formModel.amount
   }
 
   set amount(amount: any) {
-    this.transaction = amount
+    this.formModel = amount
   }
 
-  created() {
-    this.formModel = this.transaction
+  get isValid() {
+    if (this.formModel.coin && this.formModel.amount > 0) return true
+    return false
   }
 
   close() {
     this.$emit('close')
-  }
-
-  isValid(): boolean {
-    if (this.formModel.coin && this.formModel.amount > 0) return true
-
-    return false
   }
 
   onAmountOfCoins(amount: number) {
@@ -78,8 +79,13 @@ export default class BagDialog extends Vue {
   }
 
   onSelectedCoin(coin: Coin) {
-    this.formModel.coin = coin.name
-    this.formModel.symbol = coin.symbol
+    this.formModel = {
+      ...this.formModel,
+      coin: coin.name,
+      price_usd: coin.price_usd,
+      price_btc: coin.price_btc,
+      symbol: coin.symbol
+    }
   }
 
   onSubmit() {
@@ -87,10 +93,6 @@ export default class BagDialog extends Vue {
       this.$emit('submit', this.formModel)
       this.close()
     }
-  }
-
-  resetForm() {
-    this.formModel = defaultTransaction()
   }
 }
 </script>
