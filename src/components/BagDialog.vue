@@ -13,6 +13,7 @@
 							<Autocomplete
                 :value="formModel.coin"
 								@selected="onSelectedCoin"
+                @blur="onBlur"
 								placeholder="Search coins..." />
 
                 <v-flex>
@@ -48,14 +49,17 @@ const defaultTransaction = (): BaseTransaction => ({
   components: {
     Autocomplete: () => import('@/components/Autocomplete.vue'),
     'numeric-text-field': () => import('@/components/NumericTextField.vue')
-  },
-  mixins: [],
-  filters: {}
+  }
 })
 export default class BagDialog extends Vue {
   @Prop() show?: boolean
   @Prop() transaction?: BaseTransaction
   formModel: BaseTransaction = defaultTransaction()
+
+  onBlur(event: Event) {
+    const el = event.target as HTMLInputElement
+    if (!el.value) this.formModel.coin = ''
+  }
 
   get amount() {
     return this.formModel.amount

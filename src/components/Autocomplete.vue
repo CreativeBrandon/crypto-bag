@@ -9,6 +9,7 @@
             :placeholder="placeholder"
             role="combobox"
             v-model="searchInput"
+            v-on="$listeners"
             @keypress.enter="clearSearch()"
             @keyup="onKeyup" />
 
