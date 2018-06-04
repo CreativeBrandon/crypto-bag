@@ -4,7 +4,7 @@
             <img class="icon" v-if="transaction.symbol && cryptoIcon(transaction.symbol)" :src="cryptoIcon(transaction.symbol)" :alt="transaction.coin" />
         </td>
         <td class="name">{{ transaction.coin }}</td>
-        <td class="amount">{{ transaction.amount }}</td>
+        <td class="amount">{{ transaction.amount | currency('', 6)}}</td>
     </tr>  
 </template>
 

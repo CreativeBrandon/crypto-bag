@@ -14,13 +14,13 @@
         </template>
         
         <template v-else>
-          <v-btn flat light small @click="remove">Delete</v-btn>
+          <v-btn flat light small @click="remove">Remove</v-btn>
           <v-btn flat light outline small @click="edit">Edit</v-btn>
         </template>
       </header>
 
       <section class="bag-stats">
-        <div>Total USD: $0</div>
+        <div>Total: {{ bagTotal | currency }} USD</div>
         <div>Total Market Cap: $0 USD</div>
       </section>
 
@@ -83,6 +83,10 @@ export default class BagPage extends Vue {
 
   get bag(): Bag {
     return this.getBag(this.id)
+  }
+
+  get bagTotal(): number {
+    return 0
   }
 
   onAddTransaction(data: BaseTransaction) {

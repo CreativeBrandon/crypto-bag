@@ -39,7 +39,6 @@ export const addBag = (state: State, payload: Bag) => {
 
 export const addTransaction = (state: State, payload: Transaction) => {
     const { bagId, ...everythingElse } = payload
-    
     state.entities.byIds[payload.bagId].coins.push(everythingElse)
 }
 

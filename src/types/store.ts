@@ -14,8 +14,4 @@ export interface BaseTransaction {
     symbol?: string
 }
 
-export interface RootState {
-    bags: BagState
-    coins: CoinState
-    ui: any
-}
+export interface RootState {}
