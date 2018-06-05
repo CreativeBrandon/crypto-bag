@@ -1,26 +1,33 @@
 {
   "defaultSeverity": "warning",
   "extends": [
-    "tslint:recommended"
+    "tslint:recommended",
+    "tslint-config-prettier"
   ],
   "linterOptions": {
-    "exclude": ["node_modules/**/*.ts", "node_modules/**/*.vue"]
+    "exclude": [
+      "node_modules/**/*.ts",
+      "node_modules/**/*.vue"
+    ]
   },
   "rules": {
     "arrow-parens": false,
-    "curly": [true, "ignore-same-line"],
-    "indent": [true, "spaces", 2],
-    "interface-name": false,    
-    "quotemark": [true, "single"],
+    "curly": [
+      true,
+      "ignore-same-line"
+    ],
+    "interface-name": false,
     "member-access": false,
     "no-consecutive-blank-lines": false,
     "no-empty": false,
     "no-empty-interface": false,
     "no-shadowed-variable": false,
-    "object-literal-key-quotes": [true, "as-needed"],
+    "object-literal-key-quotes": [
+      true,
+      "as-needed"
+    ],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "semicolon": [false, "never"],
     "trailing-comma": false
   }
 }

@@ -1,35 +1,24 @@
 <template>
-    <section :id="id" class="autocomplete"> 
-        <header class="autocomplete-header">
-          <v-icon class="autocomplete-icon" medium>search</v-icon>
+  <section :id="id" class="autocomplete">
+    <header class="autocomplete-header">
+      <v-icon class="autocomplete-icon" medium>search</v-icon>
 
-          <input type="text"
-            aria-autocomplete="list"
-            class="autocomplete-input" 
-            :placeholder="placeholder"
-            role="combobox"
-            v-model="searchInput"
-            v-on="$listeners"
-            @keypress.enter="clearSearch()"
-            @keyup="onKeyup" />
+      <input type="text" aria-autocomplete="list" class="autocomplete-input" :placeholder="placeholder" role="combobox" v-model="searchInput" v-on="$listeners" @keypress.enter="clearSearch()" @keyup="onKeyup" />
+    </header>
 
-        </header>
-
-        <div v-if="search.isSearching" class="autocomplete-results">
-          <h2 class="results-heading">Results for <span class="term">"{{ search.query }}"</span></h2>
-          <ul class="results-list">
-            <li class="results-list-item"
-              v-for="(coin, index) in search.results" 
-              :key="index">
-                <button @click="onSelect(coin)">
-                <img class="icon" v-if="cryptoIcon(coin.symbol)" :src="cryptoIcon(coin.symbol, 'black')" :alt="coin.name" />
-                {{ coin.name}}
-                </button>
-            </li>
-          </ul>
-        </div>
-
-    </section>  
+    <div v-if="search.isSearching" class="autocomplete-results">
+      <h2 class="results-heading">Results for
+        <span class="term">"{{ search.query }}"</span>
+      </h2>
+      <ul class="results-list">
+        <li class="results-list-item" v-for="(coin, index) in search.results" :key="index">
+          <button @click="onSelect(coin)">
+            <img class="icon" v-if="cryptoIcon(coin.symbol)" :src="cryptoIcon(coin.symbol, 'black')" :alt="coin.name" /> {{ coin.name}}
+          </button>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -55,6 +44,7 @@ export default class Autocomplete extends Vue {
   get search(): CoinSearch {
     return this.coinState.search
   }
+  
 
   // Todo: Throttle with RXJS
   onKeyup(e: KeyboardEvent) {
@@ -108,10 +98,10 @@ export default class Autocomplete extends Vue {
 }
 
 .autocomplete-results {
-  background-color: #FFF;
-  border-bottom: thin solid #CCC;
-  border-left: thin solid #CCC;
-  border-right: thin solid #CCC;
+  background-color: #fff;
+  border-bottom: thin solid #ccc;
+  border-left: thin solid #ccc;
+  border-right: thin solid #ccc;
   overflow-y: auto;
   padding: 10px;
   position: fixed;
@@ -125,7 +115,7 @@ export default class Autocomplete extends Vue {
 }
 
 .results-heading {
-  font-size: 1.2rem;  
+  font-size: 1.2rem;
   font-weight: 500;
   padding-bottom: 10px;
   text-align: center;
