@@ -1,0 +1,6 @@
+/* App Breakpoints */
+@custom-media --for-phone-only (width <= 599px);
+@custom-media --for-tablet-only (width >= 600px) and (width <= 900px);
+@custom-media --for-tablet-portrait-up (width >= 600px);
+@custom-media --for-tablet-landscape-up (width >= 900px);
+@custom-media --for-desktop-up (width >= 1200px);

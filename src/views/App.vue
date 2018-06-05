@@ -36,6 +36,7 @@ export default class App extends Vue {
 </script>
 
 <style>
+@import '../styles/breakpoints.css';
 @import '../styles/theme.css';
 @import '../styles/vars.css';
 
@@ -70,4 +71,5 @@ export default class App extends Vue {
   border-right: thin solid var(--border-color);
   grid-area: a;
 }
+@media (--for-phone-only) {}
 </style>

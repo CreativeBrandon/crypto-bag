@@ -2,6 +2,7 @@
   "plugins": {
     "postcss-import": {},
     "postcss-normalize": {},
+    "postcss-nesting": {},
     "postcss-cssnext": {},
   }
 }
